@@ -64,9 +64,9 @@ class HotelController extends Controller
 
         // Add new case for each new provider's API
         switch ($api) {
-            case 'TopHotels':
+            case 'TopHotels': // Provider name
                 $res = $client->post(
-                    "http://ourhotels.pro/tophotels",
+                    "http://ourhotels.pro/tophotels", // Provider API URL
                     [
                         'json' => [
                             'from' =>  $request->from_date,
@@ -76,6 +76,8 @@ class HotelController extends Controller
                         ]
                     ]
                 );
+
+                // Handling response
                 if ($res->getStatusCode() == 200) {
                     $hotels = collect(json_decode($res->getBody()))
                         ->map(function ($hotel) {
