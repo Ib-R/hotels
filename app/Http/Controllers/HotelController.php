@@ -16,11 +16,14 @@ class HotelController extends Controller
     public function index(Request $request)
     {
         $this->validate($request, [
-            'from_date' => 'date',
-            'to_date' => 'date',
+            'from_date' => 'date|date_format:d-m-Y',
+            'to_date' => 'date|date_format:d-m-Y',
             'city' => 'string|max:3',
             'adults_number' => 'integer',
         ]);
+
+        // Fixing format
+        $request['city'] = strtoupper($request->city);
 
         // Pass the provider's names to the getHotels function and the request
         $apisResponse = $this->getHotels($request, ['TopHotels', 'BestHotel']);
@@ -69,8 +72,8 @@ class HotelController extends Controller
                     "http://ourhotels.pro/tophotels", // Provider API URL
                     [
                         'json' => [
-                            'from' =>  $request->from_date,
-                            'to' => $request->to_date,
+                            'from' =>  date('c', strtotime($request->from_date)),
+                            'to' => date('c', strtotime($request->to_date)),
                             'city' => $request->city,
                             'adultsCount' => $request->adults_number
                         ]

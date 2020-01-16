@@ -1,5 +1,5 @@
 # OurHotels Micro-Service
-OurHotels provide API to access results from different hotel service providers.
+OurHotels is hotel search solution that look into many providers and returns all the available hotels.
 ___
 ### Main Points
 * [Technologies Used](#technologies-used)
@@ -19,19 +19,17 @@ ___
 {URL}
 ```
 Get all hotels from API
-
 ___
 
 #### HEADERS
 Content-Type: application/json
-
 ___
 
 #### Body
 ```json
 {
-	"from_date": ISO_DATE,
-	"to_date": ISO_DATE,
+	"from_date": ISO_LOCAL_DATE,
+	"to_date": ISO_LOCAL_DATE,
 	"city": "IATA Code",
 	"adults_number": Integer
 }
