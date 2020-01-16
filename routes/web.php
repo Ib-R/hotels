@@ -11,7 +11,7 @@
 |
 */
 
-$router->post('/', ['as' => 'hotels', 'middleware' => 'limit:10,1', 'uses' => 'HotelController@index']);
+$router->post('/', ['as' => 'hotels', 'uses' => 'HotelController@index']);
 
 // Mocking the providers APIs
 $router->post('/tophotels', ['as' => 'top-hotels', 'uses' => 'TopHotelController@index']);
