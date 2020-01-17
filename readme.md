@@ -48,7 +48,7 @@ ___
 ```
 ___
 ## Adding Providers
-> Adding providers is as easy as adding new case to a switch statment, and passing the name of the provider to the main function (getHotels)
+> Adding providers is as easy as adding new provider class in HotelProviders folder and use it in the HotelController
 ___
 
 ## Testing
